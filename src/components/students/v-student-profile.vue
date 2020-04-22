@@ -1,36 +1,37 @@
 <template>
-    <div class="v-teacher-profile">
-    <vTeacherProfileMenu :teacher="TEACHER" />
+    <div class="v-student-profile">
+        <vStudentProfileMenu :student="STUDENT"/>
         <keep-alive>
             <router-view>
 
             </router-view>
         </keep-alive>
+
     </div>
 </template>
 
 <script>
     import {mapGetters,mapActions} from "vuex"
-    import vTeacherProfileMenu from './v-teacher-profile-menu'
+    import vStudentProfileMenu from "./v-student-profile-menu"
 
     export default {
-        name: "v-teacher-profile",
+        name: "v-student-profile",
         components:{
-            vTeacherProfileMenu,
+            vStudentProfileMenu,
 
         },
         computed:{
             ...mapGetters([
-                "TEACHER",
+                "STUDENT",
             ])
         },
         methods:{
-          ...mapActions([
-              "GET_TEACHER_PROFILE"
-          ])
+            ...mapActions([
+                "GET_STUDENT_PROFILE"
+            ])
         },
         mounted() {
-            this.GET_TEACHER_PROFILE().then((response)=>{
+            this.GET_STUDENT_PROFILE().then((response)=>{
                 if(response.data){
                     console.log("data is getted")
                 }
@@ -40,7 +41,7 @@
 </script>
 
 <style lang="scss">
-    .v-teacher-profile{
+    .v-student-profile{
         color: aliceblue;
 
     }

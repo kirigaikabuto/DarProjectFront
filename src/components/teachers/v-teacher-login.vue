@@ -57,7 +57,7 @@
         mounted() {
             this.token = localStorage.getItem("userToken")
             if (this.token){
-                // router.push("teacherProfile")
+              router.push("teacherProfile")
             }
         }
 

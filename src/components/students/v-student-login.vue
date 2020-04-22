@@ -24,6 +24,7 @@
 
 <script>
     import {mapActions,mapGetters} from "vuex"
+    import router from "../../router/router";
     export default {
         name: "v-student-login",
         data(){
@@ -46,7 +47,10 @@
             login(){
 
                 this.STUDENT_LOGIN({username:this.username,password:this.password}).then((response)=>{
-                    console.log(response);
+                    if(response.data){
+                        console.log("data is getted")
+                        router.push("studentProfile")
+                    }
                 });
             }
         },
@@ -56,7 +60,11 @@
                     if(response){
                         console.log(response);
                     }
-                })
+                }),
+                this.token = localStorage.getItem("userToken")
+                if (this.token){
+                    router.push("studentProfile")
+                }
         }
     }
 </script>
